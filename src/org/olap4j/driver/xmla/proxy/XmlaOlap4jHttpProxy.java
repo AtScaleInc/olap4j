@@ -108,21 +108,27 @@ public class XmlaOlap4jHttpProxy extends XmlaOlap4jAbstractHttpProxy
 
             // Encode credentials for basic authentication
             StringBuilder sb = new StringBuilder();
-            if (serverInfos.getUsername() != null
-                && serverInfos.getPassword() != null)
-            {
-                sb.append(serverInfos.getUsername());
-                sb.append(":");
-                sb.append(serverInfos.getPassword());
-            } else if (url.getUserInfo() != null) {
-                sb.append(url.getUserInfo());
-            }
-            if (!sb.toString().equals("")) {
-                String encoding =
-                    Base64.encodeBytes(
-                        sb.toString().getBytes(), 0);
-                urlConnection.setRequestProperty(
-                    "Authorization", "Basic " + encoding);
+            if ( serverInfos.getUsername() == "JWTTOKEN" ) {
+              urlConnection.setRequestProperty(
+                  "Authorization",
+                  "Bearer " + serverInfos.getPassword());              
+            } else {
+              if (serverInfos.getUsername() != null
+                  && serverInfos.getPassword() != null)
+              {
+                  sb.append(serverInfos.getUsername());
+                  sb.append(":");
+                  sb.append(serverInfos.getPassword());
+              } else if (url.getUserInfo() != null) {
+                  sb.append(url.getUserInfo());
+              }
+              if (!sb.toString().equals("")) {
+                  String encoding =
+                      Base64.encodeBytes(
+                          sb.toString().getBytes(), 0);
+                  urlConnection.setRequestProperty(
+                      "Authorization", "Basic " + encoding);
+              }
             }
 
             // Set correct cookies
@@ -201,6 +207,3 @@ public class XmlaOlap4jHttpProxy extends XmlaOlap4jAbstractHttpProxy
 }
 
 // End XmlaOlap4jHttpProxy.java
-
-
-
