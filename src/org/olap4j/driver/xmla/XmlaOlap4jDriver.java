@@ -360,6 +360,7 @@ public class XmlaOlap4jDriver implements Driver {
         SCHEMA("Name of the schema"),
         CACHE("Class name of the SOAP cache implementation"),
         ROLE("Comma separated list of roles this connection impersonates"),
+        USEJWT("Boolean TRUE to enable JWT authentication"),
         USER("Username to use when creating connections to the server."),
         PASSWORD("Password to use when creating connections to the server.");
 

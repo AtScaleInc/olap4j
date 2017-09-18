@@ -228,6 +228,10 @@ abstract class XmlaOlap4jConnection implements OlapConnection {
         this.serverInfos =
             new XmlaOlap4jServerInfos() {
                 private String sessionId = null;
+                public boolean getUseJWT() {
+                    return Boolean.valueOf(map.get(
+                        XmlaOlap4jDriver.Property.USEJWT.name()));
+                }
                 public String getUsername() {
                     return map.get(
                         XmlaOlap4jDriver.Property.USER.name());

@@ -106,13 +106,14 @@ public class XmlaOlap4jHttpProxy extends XmlaOlap4jAbstractHttpProxy
                     "\"urn:schemas-microsoft-com:xml-analysis:Execute\"");
             }
 
-            // Encode credentials for basic authentication
             StringBuilder sb = new StringBuilder();
-            if ( serverInfos.getUsername() == "JWTTOKEN" ) {
+            if ( serverInfos.getUseJWT() ) {
+              // Pass the JWT token as is
               urlConnection.setRequestProperty(
                   "Authorization",
-                  "Bearer " + serverInfos.getPassword());              
+                  "Bearer " + serverInfos.getPassword());
             } else {
+              // Encode credentials for basic authentication
               if (serverInfos.getUsername() != null
                   && serverInfos.getPassword() != null)
               {

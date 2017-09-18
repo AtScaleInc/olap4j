@@ -29,6 +29,11 @@ public interface XmlaOlap4jServerInfos {
      */
     URL getUrl();
     /**
+     * Returns if JTW authenticaton should be used.
+     * @return the enable jwt flag.
+     */
+   boolean getUseJWT();
+    /**
      * Returns the username to use with the URL.
      * @return the username.
      */
