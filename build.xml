@@ -43,11 +43,11 @@ src/org/olap4j/mdx/parser/impl/SimpleCharStream.java,
 src/org/olap4j/mdx/parser/impl/Token.java,
 src/org/olap4j/mdx/parser/impl/TokenMgrError.java,
 src/org/olap4j/driver/xmla/XmlaOlap4jDriverVersion.java" />
-
+    
     <target name="checkJdkVersion" unless="jdk17.present">
-      <fail message="The 'jar' target (and dependent targets 'dist', 'binzip')
+<!--      <fail message="The 'jar' target (and dependent targets 'dist', 'binzip')
                      must be run under JDK 1.7." />
-    </target>
+    --></target>
 
     <condition property="jdk15.present">
         <contains string="${java.version}" substring="1.5." />
